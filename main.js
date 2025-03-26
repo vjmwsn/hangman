@@ -1,12 +1,16 @@
-let hangmanBodyParts = ["#del4","#del5","#del6","#del7","#del8","#del9","#del11","#del12","#del13","#del14","#del15" ]
-let wordList = ["Word","word2"]
+let wordList = ["word","word2"]
+let guessesBadList = []
+let guessesGoodList = []
 let selectedWord = ""
 let guess = ""
 
-let index = 0
+let index = 4
+    
+    let guessButton = document.querySelector("#guessButton")
+    guessButton.addEventListener("click", getInput)
 
-function showBodyPart (id) {
-    document.querySelector("#del4").classList.remove("hidden")
+function showBodyPart (_index) {
+    document.querySelector("#del" + _index).classList.remove("hidden")
 }
 
 function selectWord() {
@@ -14,20 +18,39 @@ function selectWord() {
     return selectedWord
 }
 
-selectWord()
-guessButton()
+function resetGame(){
+    selectWord()
+    console.log("the word is: " + selectedWord)
 
-function guessButton() {
-    let guessButton = document.querySelector("#guessButton")
-    guessButton.addEventListener("click", getInput)
 }
 
 
 
 function getInput() {
     let inputElement = document.querySelector("#input")
-    guess = inputElement.value
+    guess = inputElement.value.toLowerCase()
     console.log(guess)
+
+    if (letterExists(guessesGoodList,guess)) {
+        console.log("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
+    }
+    else if ( letterExists(selectedWord, guess))  {
+        guessesGoodList.push(guess)
+        document.querySelector("#guessesGood").innerText = guessesGoodList
+    }else{
+        guessesBadList.push(guess)
+        document.querySelector("#guessesBad").innerText = guessesBadList
+        showBodyPart(index)
+        index ++
+    }
 }
 
+function letterExists (item, key) {
+    return item.indexOf(key) >= 0
+}
 
+function updateGuesses (key) {}
+
+function parseWord (word, key) {}
+
+resetGame()
