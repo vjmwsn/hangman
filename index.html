@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+
     <title>Hangman game</title>
 </head>
 <body>
@@ -13,6 +13,8 @@
             <section>Ledtrådar</section>
             <section>Ord</section>
             <section>Gissning</section>
+            <input id="input" placeholder="skriv din gissning här" type="text"></input>
+            <button id="guessButton">Gissa</button>
         </main>
         <side>
             <svg viewBox="0 0 153 344" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
@@ -28,18 +30,16 @@
                     <path id="del7" d="m168.119 245.879 33.726-48.015" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
                     <path id="del8" d="m201.845 275.206 24.652 105.139" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
                     <path id="del9" d="m177.194 419.957 24.651-105.139" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="translate(0 -39.612)"/>
-                    <g id="del10">
-                      <path d="M192.413 140.517v7.094" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="matrix(1 0 0 1.09745 0 -13.693)"/>
-                      <path d="M192.413 140.517v7.094" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="matrix(1 0 0 1.09745 16.798 -13.693)"/>
-                      <path d="M189.52 144.633h5.786" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
-                      <path d="M189.52 144.633h5.786" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="translate(16.798)"/>
-                      <path d="M192.413 166.788s3.109-6.041 9.432-5.862c6.324.18 7.366 5.625 7.366 5.625" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
-                    </g>
+                    <path id="del11" d="M192.413 140.517v7.094" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="matrix(1 0 0 1.09745 0 -13.693)"/>
+                    <path id="del12" d="M192.413 140.517v7.094" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="matrix(1 0 0 1.09745 16.798 -13.693)"/>
+                    <path id="del13" d="M189.52 144.633h5.786" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
+                    <path id="del14" d="M189.52 144.633h5.786" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px" transform="translate(16.798)"/>
+                    <path id="del15" d="M192.413 166.788s3.109-6.041 9.432-5.862c6.324.18 7.366 5.625 7.366 5.625" class="hidden" style="fill:none;stroke:currentColor;stroke-width:1px"/>
                   </g>
                 </g>
               </svg>
         </side>
     </div>
-    
+    <script src="main.js"></script>
 </body>
 </html>
