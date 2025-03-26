@@ -27,22 +27,32 @@ function resetGame(){
 
 
 function getInput() {
+
     let inputElement = document.querySelector("#input")
     guess = inputElement.value.toLowerCase()
+    inputElement.value = ""
+    inputElement.select()
     console.log(guess)
 
-    if (letterExists(guessesGoodList,guess)) {
+
+    if (letterExists(guessesGoodList,guess) || letterExists(guessesBadList,guess)) {
         console.log("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
     }
     else if ( letterExists(selectedWord, guess))  {
         guessesGoodList.push(guess)
         document.querySelector("#guessesGood").innerText = guessesGoodList
-    }else{
+    } else{
         guessesBadList.push(guess)
         document.querySelector("#guessesBad").innerText = guessesBadList
         showBodyPart(index)
         index ++
     }
+
+    let gameEnded = index == 16
+    if(gameEnded) {
+        alert("you are really bad at this")
+    }
+    
 }
 
 function letterExists (item, key) {
