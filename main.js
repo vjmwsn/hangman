@@ -14,6 +14,9 @@ let guessButton = document.querySelector("#guessButton")
 let resetButton = document.querySelector("#resetButton")
     resetButton.addEventListener("click", resetGame)
 
+let creditsButton = document.querySelector("#creditsButton")
+    creditsButton.addEventListener("click", guessHowHandsomeThisGuyIs)
+
 let inputElement = document.querySelector("#input")
 inputElement.addEventListener("keypress", function(event) {
     if (event.keyCode === 13) {
@@ -30,6 +33,14 @@ function guessWhichToastToDisplay (apa) {
     setTimeout(() =>{
         toastElement.classList.add("hidden")
     }, FIVE_SEC)
+}
+
+function guessHowHandsomeThisGuyIs() {
+   let handsomeElement = document.querySelector("#sexeeey")
+   handsomeElement.classList.remove("hidden")
+   setTimeout(() =>{
+    handsomeElement.classList.add("hidden")
+}, 250)
 }
 
 function showBodyPart (_index) {
@@ -52,6 +63,8 @@ function resetGame(){
     document.querySelector("#guessesGood").innerText = ""
     document.querySelector("#guessesBad").innerText = ""
     document.querySelector("#resetButton").classList.add("hidden")
+    document.querySelector("#sexeeey").classList.add("hidden")
+
 }
 
 function displayWord (guess) {

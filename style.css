@@ -38,6 +38,7 @@ svg {
 
 main {
     flex: 1 1 auto;
+    
 }
 
 .hidden {
@@ -46,4 +47,12 @@ main {
 
 section {
     min-height: 40px;
+}
+
+.sexyman {
+    background-image: url("viggo-normal.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    inset: 0;
 }
