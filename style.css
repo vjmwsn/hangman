@@ -4,7 +4,26 @@
     font-size: 22px;
     display: inline-block;
     min-width: 2ch;
+    min-height: 3ch;
     text-align: center;
+}
+
+#toast {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3f3f3f;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  color: white;
+}
+
+#word-display {
+    display: flex;
+    align-items: end;
+    padding-top: 2rem;    
 }
 
 .flex-wrapper {

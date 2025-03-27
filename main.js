@@ -6,8 +6,23 @@ let selectedWord = ""
 
 let index = 4
     
-    let guessButton = document.querySelector("#guessButton")
+let guessButton = document.querySelector("#guessButton")
     guessButton.addEventListener("click", getInput)
+
+let resetButton = document.querySelector("#resetButton")
+    resetButton.addEventListener("click", resetGame)
+
+
+function guessWhichToastToDisplay (apa) {
+    let toastElement = document.querySelector("#toast")
+    const FIVE_SEC = 5000
+
+    toastElement.innerText = apa
+    toastElement.classList.remove("hidden")
+    setTimeout(() =>{
+        toastElement.classList.add("hidden")
+    }, FIVE_SEC)
+}
 
 function showBodyPart (_index) {
     document.querySelector("#del" + _index).classList.remove("hidden")
@@ -23,8 +38,12 @@ function resetGame(){
     console.log("the word is: " + selectedWord)
     shownLetterList = selectedWord.split("")
     shownLetterList.fill(false)
-
+    guessesBadList = []
+    guessesGoodList = []
     displayWord()
+    document.querySelector("#guessesGood").innerText = ""
+    document.querySelector("#guessesBad").innerText = ""
+    document.querySelector("#resetButton").classList.add("hidden")
 }
 
 function displayWord (guess) {
@@ -62,7 +81,7 @@ function getInput() {
 
 
     if (letterExists(guessesGoodList,guess) || letterExists(guessesBadList,guess)) {
-        console.log("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
+        guessWhichToastToDisplay("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
     }
     else if (correctGuess)  {
         guessesGoodList.push(guess)
@@ -89,12 +108,14 @@ function getInput() {
     }
 
     if(finalGuess) {
-        alert("you made it smartass")
+        guessWhichToastToDisplay("you made it smartass")
+        document.querySelector("#resetButton").classList.remove("hidden")
     }
 
     let gameEnded = index == 16
     if(gameEnded) {
         alert("you are really bad at this")
+        document.querySelector("#resetButton").classList.remove("hidden")
     }
 
 
