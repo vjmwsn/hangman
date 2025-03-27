@@ -1,9 +1,8 @@
-let wordList = ["word","wordtwo"]
+let wordList = ["word","hunger","food", "needed", "oskarcpkropp"]
 let shownLetterList = []
 let guessesBadList = []
 let guessesGoodList = []
 let selectedWord = ""
-let guess = ""
 
 let index = 4
     
@@ -23,24 +22,35 @@ function resetGame(){
     selectWord()
     console.log("the word is: " + selectedWord)
     shownLetterList = selectedWord.split("")
-    shownLetterList.fill(0)
+    shownLetterList.fill(false)
 
     displayWord()
 }
 
-function displayWord () {
+function displayWord (guess) {
     let displayWordElement = document.querySelector("#word-display")
 
     displayWordElement.innerHTML = ""
-    for(i=0 ; i < shownLetterList.length ; i++) {
-        displayWordElement.innerHTML += '<span class="imreallyhungry">_</span>'
+    for(i=0 ; i < selectedWord.length ; i++) {
+        let isFoundLetter = selectedWord[i] == guess  // true/false
+        let letter = ""
+        if(isFoundLetter) {
+            letter = guess // == selectedWord[i]
+            shownLetterList[i] = true
+        } else if(shownLetterList[i]) {
+            letter = selectedWord[i]
+        }
+
+
+        console.log(isFoundLetter, guess)
+        displayWordElement.innerHTML += '<span class="imreallyhungry">' + letter + '</span>'
+
     }
 }
 
 function getInput() {
-
     let inputElement = document.querySelector("#input")
-    guess = inputElement.value.toLowerCase()
+    let guess = inputElement.value.toLowerCase()
 
     inputElement.value = ""
     inputElement.select()
@@ -58,7 +68,9 @@ function getInput() {
         guessesGoodList.push(guess)
         document.querySelector("#guessesGood").innerText = guessesGoodList
 
-        displayWord()
+
+
+        displayWord(guess)
 
     } else{
         guessesBadList.push(guess)
@@ -66,6 +78,18 @@ function getInput() {
         showBodyPart(index)
         index ++
 
+    }
+    
+    let finalGuess = true
+
+    for(i=0 ; i < shownLetterList.length ; i++) {
+        if(!shownLetterList[i]) {
+            finalGuess = false
+        }
+    }
+
+    if(finalGuess) {
+        alert("you made it smartass")
     }
 
     let gameEnded = index == 16

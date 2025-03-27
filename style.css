@@ -1,7 +1,10 @@
 .imreallyhungry {
     margin: 0.25em;
-    border-bottom: 3px #737373;
+    border-bottom: 3px solid #737373;
     font-size: 22px;
+    display: inline-block;
+    min-width: 2ch;
+    text-align: center;
 }
 
 .flex-wrapper {
