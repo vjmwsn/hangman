@@ -1,8 +1,10 @@
-let wordList = ["word","hunger","food", "needed", "oskarcpkropp", "datormus", "rickardsmagichandfixoskarscpbody"]
+let wordList = ["word","hunger","food", "needed", "oskarcpkropp", "datormus", "rickardsmagichandfixoskarscpbody", "gratisgaffel"]
 let shownLetterList = []
 let guessesBadList = []
 let guessesGoodList = []
 let selectedWord = ""
+
+
 
 let index = 4
     
@@ -12,6 +14,12 @@ let guessButton = document.querySelector("#guessButton")
 let resetButton = document.querySelector("#resetButton")
     resetButton.addEventListener("click", resetGame)
 
+let inputElement = document.querySelector("#input")
+inputElement.addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) {
+        getInput()
+    }
+});
 
 function guessWhichToastToDisplay (apa) {
     let toastElement = document.querySelector("#toast")
@@ -68,14 +76,13 @@ function displayWord (guess) {
 }
 
 function getInput() {
-    let inputElement = document.querySelector("#input")
     let guess = inputElement.value.toLowerCase()
 
     inputElement.value = ""
     inputElement.select()
     console.log(guess)
     let correctGuess = letterExists(selectedWord, guess)
-    if( !guess.match(/[a-zå]/)) {
+    if( !guess.match(/[a-zåäö]/)) {
         return
     }
 
