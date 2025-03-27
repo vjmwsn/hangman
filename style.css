@@ -1,5 +1,7 @@
-* {
-    border: 1px solid;
+.imreallyhungry {
+    margin: 0.25em;
+    border-bottom: 3px #737373;
+    font-size: 22px;
 }
 
 .flex-wrapper {
