@@ -1,4 +1,4 @@
-let wordList = ["word","hunger","food", "needed", "oskarcpkropp"]
+let wordList = ["word","hunger","food", "needed", "oskarcpkropp", "datormus", "rickardsmagichandfixoskarscpbody"]
 let shownLetterList = []
 let guessesBadList = []
 let guessesGoodList = []
@@ -75,7 +75,7 @@ function getInput() {
     inputElement.select()
     console.log(guess)
     let correctGuess = letterExists(selectedWord, guess)
-    if( !guess.match(/[a-z]/)) {
+    if( !guess.match(/[a-zå]/)) {
         return
     }
 
