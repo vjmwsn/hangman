@@ -3,9 +3,6 @@ let shownLetterList = []
 let guessesBadList = []
 let guessesGoodList = []
 let selectedWord = ""
-
-
-
 let index = 4
     
 let guessButton = document.querySelector("#guessButton")
@@ -43,13 +40,10 @@ function guessHowHandsomeThisGuyIs() {
 }, 250)
 }
 
-function showBodyPart (_index) {
-    document.querySelector("#del" + _index).classList.remove("hidden")
+function toogleBodyPart (_index, hidden = false) {
+    document.querySelector("#del" + _index).classList.toggle("hidden", hidden)
 }
 
-function hideBodyPart (_index) {
-    document.querySelector("#del" + _index).classList.add("hidden")
-}
 
 function selectWord() {
     selectedWord = wordList[Math.ceil(Math.random() * wordList.length - 1)]
@@ -68,9 +62,10 @@ function resetGame(){
     document.querySelector("#guessesBad").innerText = ""
     document.querySelector("#resetButton").classList.add("hidden")
     document.querySelector("#sexeeey").classList.add("hidden")
+    index = 4
 
-    for(i=4 ; i < 15 ; i++) {
-        hideBodyPart(i)
+    for(i=index ; i < 15 ; i++) {
+        toogleBodyPart(i, true)
     }
 
 }
@@ -89,19 +84,15 @@ function displayWord (guess) {
             letter = selectedWord[i]
         }
 
-
-        console.log(isFoundLetter, guess)
         displayWordElement.innerHTML += '<span class="imreallyhungry">' + letter + '</span>'
-
     }
 }
 
 function getInput() {
     let guess = inputElement.value.toLowerCase()
-
     inputElement.value = ""
     inputElement.select()
-    console.log(guess)
+
     let correctGuess = letterExists(selectedWord, guess)
     if( !guess.match(/[a-zåäö]/)) {
         return
@@ -109,20 +100,17 @@ function getInput() {
 
 
     if (letterExists(guessesGoodList,guess) || letterExists(guessesBadList,guess)) {
-        guessWhichToastToDisplay("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
+        guessWhichToastToDisplay(`Du har redan gissat på ${guess}`) 
     }
     else if (correctGuess)  {
         guessesGoodList.push("" + guess)
-        document.querySelector("#guessesGood").innerText = guessesGoodList
-
-
+        document.querySelector("#guessesGood").innerText = guessesGoodList.sort()
 
         displayWord(guess)
-
     } else{
         guessesBadList.push(" " + guess)
-        document.querySelector("#guessesBad").innerHTML = guessesBadList
-        showBodyPart(index)
+        document.querySelector("#guessesBad").innerHTML = guessesBadList.sort()
+        toogleBodyPart(index)
         index ++
 
     }
