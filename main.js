@@ -1,4 +1,4 @@
-let wordList = ["word","hunger","food", "needed", "oskarcpkropp", "datormus", "rickardsmagichandfixoskarscpbody", "gratisgaffel"]
+let wordList = ["word","hunger","food", "needed", "oskarcpkropp", "datormus", "rickardsmagichandfixoskarscpbody", "gratisgaffel", "ligma", "roddbåt", "ögon", "cykelkorg", "presentpapper", "fikastund", "bilbatteri", "natriumtripolyfosfat", "växellåda", "analöppning"]
 let shownLetterList = []
 let guessesBadList = []
 let guessesGoodList = []
@@ -47,6 +47,10 @@ function showBodyPart (_index) {
     document.querySelector("#del" + _index).classList.remove("hidden")
 }
 
+function hideBodyPart (_index) {
+    document.querySelector("#del" + _index).classList.add("hidden")
+}
+
 function selectWord() {
     selectedWord = wordList[Math.ceil(Math.random() * wordList.length - 1)]
     return selectedWord
@@ -64,6 +68,10 @@ function resetGame(){
     document.querySelector("#guessesBad").innerText = ""
     document.querySelector("#resetButton").classList.add("hidden")
     document.querySelector("#sexeeey").classList.add("hidden")
+
+    for(i=4 ; i < 15 ; i++) {
+        hideBodyPart(i)
+    }
 
 }
 
@@ -104,7 +112,7 @@ function getInput() {
         guessWhichToastToDisplay("din jävla fucking idiot jag kommer släppa all min ilska på dig!!")
     }
     else if (correctGuess)  {
-        guessesGoodList.push(guess)
+        guessesGoodList.push("" + guess)
         document.querySelector("#guessesGood").innerText = guessesGoodList
 
 
@@ -112,7 +120,7 @@ function getInput() {
         displayWord(guess)
 
     } else{
-        guessesBadList.push(guess)
+        guessesBadList.push(" " + guess)
         document.querySelector("#guessesBad").innerHTML = guessesBadList
         showBodyPart(index)
         index ++
@@ -132,10 +140,12 @@ function getInput() {
         document.querySelector("#resetButton").classList.remove("hidden")
     }
 
-    let gameEnded = index == 16
+    let gameEnded = index == 15
     if(gameEnded) {
-        alert("you are really bad at this")
+        guessWhichToastToDisplay("ALERT, ALERT! you are reeeeally bad at this")
         document.querySelector("#resetButton").classList.remove("hidden")
+        shownLetterList.fill(true)
+        displayWord("")
     }
 
 
